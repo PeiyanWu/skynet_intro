@@ -26,7 +26,9 @@ def create_dh_key() -> Tuple[int, int]:
     # Creates a Diffie-Hellman key
     # Returns (public, private)
     a = random.randint(0, int(2**8))
-    return (a, a)
+    g=2
+    A = pow(g, a, prime)
+    return (A, a)
 
 def calculate_dh_secret(their_public: int, my_private: int) -> bytes:
     # Calculate the shared secret
